@@ -1,13 +1,11 @@
-export default class clientController{
-    #clientService;
-
-    constructor(clientService){
-        this.#clientService = clientService;
+export default class ClientController{
+    constructor(){
+       
     }
 
-    async getAll(req, res, next) {
+    getAll =  async(req, res, next)=> {
         try{
-            const clients = await this.#clientService.getAll();
+            let clients // = select no banco como validarei com zod a vinda do front não é necessario service
             res.status(200).json({message:"sucesso", clients:clients});
         }
         catch(e){
@@ -15,33 +13,31 @@ export default class clientController{
         }
     }
 
-    async getOne(req, res, next){
+    getOne = async (req, res, next) => {
         const clientId = req.params.id;
         try{
-            const client = await this.#clientService.getOne(clientId);
-            res.status(200).json({message:"sucesso", client:client})
+            
+            res.status(200).json({message:"sucesso", client:clientId})
         }
         catch(e){
             next(e);
         }
     }
 
-    async patch(req, res, next){
+    patch = async(req, res, next)=>{
         const clientId = req.params.id;
         const clientModification = req.body;
         try{
-            await this.#clientService.patch(clientId, clientModification);
-            res.status(200).json({message:"sucesso"});
+            res.status(200).json({message:"sucesso", idClient:  clientId, clientMod: clientModification});
         }
         catch(e){
             next(e);
         }
     }
 
-    async post(req, res, next){
+    post = async(req, res, next)=>{
         const client = req.body;
         try{
-            await this.#clientService.post(client);
             res.status(200).json({message:"sucesso", body: req.body});
         }
         catch(e){
@@ -49,10 +45,9 @@ export default class clientController{
         }
     }
 
-    async remove(req, res, next){
+    remove = async(req, res, next)=>{
         const clientId = req.params.id;
         try{
-            await this.#clientService.remove(clientId);
             res.status(200).json({message:"sucesso", body: `id deleted: ${clientId}`});
         }
         catch(e){

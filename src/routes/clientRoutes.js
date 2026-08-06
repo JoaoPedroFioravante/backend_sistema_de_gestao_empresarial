@@ -1,11 +1,13 @@
 import express from 'express';
+import ClientController from '../controllers/clientsController.js';
+import errorTreatment from '../middlewares/errorTreatment.js';
 
 const router = express.Router();
-
-router.get("/", clientsController.getAll());
-router.get("/:id", clientsController.getOne());
-router.patch("/:id", clientsController.patch());
-router.post("/", clientsController.post());
-router.delete("/:id", clientController.remove());
+const controller = new ClientController();
+router.get("/", controller.getAll);
+router.get("/:id", controller.getOne);
+router.patch("/:id", controller.patch);
+router.post("/", controller.post);
+router.delete("/:id", controller.remove);
 
 export default router;
