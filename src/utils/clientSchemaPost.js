@@ -6,8 +6,13 @@ const clientSchema = z.object({
     cpf : z.string().length(11, "o cpf deve ter 11 caracteres exatamente"),
     email: z.email("email invalido"),
     password: z.string().min(8, "tamanho minimo da senha é 8 caracteres").max(20, "tamanho maximo da senha é 20 caracteres"),
-    confirmPassword: z.string().min(8).max(20),
+    confirmPassword: z.string(),
     contactNumbers: z.array(int).min(1).optional()
+}).refine((data)=>{
+    return data.password === data.confirmPassword,{
+        error: "senhas não coincidem",
+        path: ["confirmPassword"]
+    }
 });
 
 export default clientSchema;
