@@ -1,11 +1,11 @@
 import express from 'express';
 
 const router = express.Router();
-/*
-router.get("/", getAllServiceOrderController);
-router.get("/:id", getOneServiceOrderController);
-router.patch("/:id", patchServiceOrderController);
-router.post("/", addServiceOrderController);
-router.delete("/:id", deleteServiceOrderController);
-*/
+
+router.get("/", getAllServiceOrder);
+router.get("/:id", getOneServiceOrder);
+router.patch("/:id", patchServiceOrder);
+router.post("/", addServiceOrder);
+router.delete("/:id", deleteServiceOrder);
+
 export default router;
