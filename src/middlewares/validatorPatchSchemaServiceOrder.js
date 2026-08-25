@@ -1,18 +1,17 @@
 import z from "zod";
-import clientSchema from "../utils/clientSchemaPatch.js";
+import serviceOrderSchema from "../utils/serviceOrderSchemaPatch.js";
 import personalizedError from "../errors/PersonalizedError.js";
 
-const validatorPatchSchemaClient = (req, res, next) => {
-  const isValidObject = clientSchema.safeParse(req.body);
+const validatorPatchSchemaClient = (res, req, next) => {
+  const isValidObject = serviceOrderSchema.safeParse(res.body);
 
   if (!isValidObject.success) {
     throw new personalizedError(
       400,
-      "json recebido invalido",
+      "json recebido inválido",
       z.flattenError(isValidObject.error).fieldErrors,
     );
   }
   next();
 };
-
 export default validatorPatchSchemaClient;
