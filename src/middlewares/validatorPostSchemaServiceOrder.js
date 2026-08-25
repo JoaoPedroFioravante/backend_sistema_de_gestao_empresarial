@@ -1,9 +1,9 @@
 import z from "zod";
-import clientSchema from "../utils/clientSchemaPatch.js";
+import servicerOrderSchemaPost from "../utils/serviceOrderSchemaPost.js";
 import personalizedError from "../errors/PersonalizedError.js";
 
-const validatorPatchSchemaClient = (req, res, next) => {
-  const isValidObject = clientSchema.safeParse(req.body);
+const validatorPostSchemaServiceOrder = (req, res, next) => {
+  const isValidObject = servicerOrderSchemaPost.safeParse(req.body);
 
   if (!isValidObject.success) {
     throw new personalizedError(
@@ -14,5 +14,4 @@ const validatorPatchSchemaClient = (req, res, next) => {
   }
   next();
 };
-
-export default validatorPatchSchemaClient;
+export default validatorPostSchemaServiceOrder;

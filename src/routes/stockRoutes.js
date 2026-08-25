@@ -1,4 +1,4 @@
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
 /*
@@ -9,4 +9,3 @@ router.post("/", addStockController);
 router.delete("/:id", deleteStockController);
 */
 export default router;
-
