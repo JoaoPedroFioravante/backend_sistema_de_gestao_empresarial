@@ -1,12 +1,13 @@
 import e from 'express'
-
+import validatorPatchSchemaPayout from '../middlewares/validatorPatchSchemaPayout.js';
+import validatorPostSchemaPayout from '../middlewares/validatorPostSchemaPayout.js';
 const router = e.Router();
 let controller;
 
 router.get("/", controller.get);
 router.get("/:id", controller.getOne);
-router.post("/", controller.post);
-router.patch("/:id", controller.patch);
+router.post("/" ,validatorPostSchemaPayout, controller.post);
+router.patch("/:id", validatorPatchSchemaPayout, controller.patch);
 router.delete("/:id", controller.delete);
 
 export default router;
