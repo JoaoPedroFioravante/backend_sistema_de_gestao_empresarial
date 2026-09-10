@@ -1,5 +1,5 @@
 import z from "zod";
-import validDate from "./validateDate";
+import validDate from "./validateDate.js";
 
 const serviceOrderSchema = z.object({
   data_inicio: validDate,

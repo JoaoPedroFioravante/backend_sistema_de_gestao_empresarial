@@ -1,5 +1,5 @@
 import z from "zod";
-import validDate from "./validateDate";
+import validDate from "./validateDate.js";
 
 const StockSchemaPost = z.object({
     nome: z.string().min(3, "nome do produto não pode ser menor que 3 caracteres").max(50, "nome do produto não pode ser maior que 50 caracteres"),
