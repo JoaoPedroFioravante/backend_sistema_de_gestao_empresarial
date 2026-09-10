@@ -23,13 +23,11 @@ export default class ClientController {
     const clientId = req.params.id;
     const clientModification = req.body;
     try {
-      res
-        .status(200)
-        .json({
-          message: "sucesso",
-          idClient: clientId,
-          clientMod: clientModification,
-        });
+      res.status(200).json({
+        message: "sucesso",
+        idClient: clientId,
+        clientMod: clientModification,
+      });
     } catch (e) {
       next(e);
     }

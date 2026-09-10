@@ -1,12 +1,9 @@
 import z from "zod";
-
+import validDate from './validateDate.js';
 const serviceOrderSchemaPatch = z.object({
-  data_inicio: z.coerce
-    .date("a entrada da data inicio está inválida o tipo esperado é data")
+  data_inicio: validDate
     .optional(),
-  data_fim: z.coerce
-    .date("a entrada da data fim está inválida o tipo esperado é data")
-    .optional(),
+  data_fim: validDate.optional(),
   valor_total: z
     .number("o valor total deve ser numero")
     .min(1, "valor minimo tem que ser 1")
