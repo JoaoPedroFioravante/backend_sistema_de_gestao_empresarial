@@ -2,7 +2,7 @@ import z from "zod";
 import stockSchemaPatch from "../utils/stockSchemaPatch.js"
 import personalizedError from "../errors/PersonalizedError.js";
 
-const validatorPatchSchemaStock(req, res, next)=>{
+const validatorPatchSchemaStock = (req, res, next)=>{
     const isValidObject = stockSchemaPatch.safeParse(req.body);
     if(!isValidObject.success){
         throw new personalizedError(
