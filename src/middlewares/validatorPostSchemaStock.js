@@ -2,7 +2,7 @@ import z from "zod";
 import stockSchemaPost from "../utils/stockSchemaPost.js"
 import personalizedError from "../errors/PersonalizedError.js";
 
-const validatorPostSchemaStock(req, res, next)=>{
+const validatorPostSchemaStock = (req, res, next)=>{
     const isValidObject = stockSchemaPost.safeParse(req.body);
 
     if(!isValidObject.success){
