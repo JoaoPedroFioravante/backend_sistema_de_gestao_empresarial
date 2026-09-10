@@ -8,9 +8,9 @@ import payoutRoutes from './payoutRoutes.js'
 
 const app = express.Router();
 /*
-app.use("/stock", stockRoutes);
 app.use("/auth", authRoutes);
 */
+app.use("/stock", stockRoutes);
 app.use("/serviceOrder", serviceOrderRoutes);
 app.use("/client", clientRoutes);
 app.use("/payout", payoutRoutes);
