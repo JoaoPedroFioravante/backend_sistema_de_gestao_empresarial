@@ -1,0 +1,62 @@
+datasource db{
+    provider = "sqlite"
+}
+//mudar para postgresql futuramente
+
+model User{
+    id String @id @default(uuid())
+    email String @unique
+    password String 
+    clients Client[]
+    stock Products[]
+}
+
+model Client{
+    id Int @id @default(autoincrement())
+    name String
+    last_name String
+    cpf String @unique
+    user_id String 
+    contact_numbers Contact_number[]
+    service_orders Service_order[]
+    user User @relation(fields: [user_id], references: [id])
+}
+
+model Contact_number{
+    number String 
+    client_id Int
+    client Client @relation(fields: [client_id], references: [id])
+    @@id([number, client_id])
+}
+
+model Service_order{
+    id Int @id @default(autoincrement())
+    data_inicio DateTime 
+    data_fim DateTime?
+    valor_total Decimal 
+    descricao String
+    rua String
+    numero Int
+    client_id Int 
+    payouts Payout[]
+    client Client @relation(fields: [client_id], references: [id])
+}
+
+model Payout{
+    id Int @id @default(autoincrement())
+    valor Decimal
+    data DateTime
+    tipo String
+    service_order_id Int
+    service_order Service_order @relation(fields: [service_order_id], references: [id])
+}
+
+model Products{
+    id Int @id @default(autoincrement())
+    nome String
+    valor Decimal
+    data_entrada DateTime
+    quantidade Int
+    user_id String
+    user User @relation(fields: [user_id], references: [id])
+}
