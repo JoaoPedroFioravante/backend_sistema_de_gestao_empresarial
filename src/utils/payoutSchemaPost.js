@@ -1,5 +1,5 @@
 import z from 'zod'
-import validDate from './validateDate';
+import validDate from './validateDate.js';
 
 const payoutSchemaPost = z.object({
     valor: z.number("o valor deve ser um numero"),
