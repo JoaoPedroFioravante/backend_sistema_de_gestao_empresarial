@@ -1,8 +1,6 @@
 import z from "zod";
 import validDate from './validateDate';
 const serviceOrderSchemaPatch = z.object({
-  data_inicio: validDate
-    .optional(),
   data_fim: validDate.optional(),
   valor_total: z
     .number("o valor total deve ser numero")
