@@ -37,27 +37,25 @@ export default class StockController {
 
   post = async (req, res, next) => {
     const product = req.body;
-    try{
-        res.status(201).json({
-            message:"sucess",
-            product: product
-        });
-    }
-    catch(e){
-        next(e);
+    try {
+      res.status(201).json({
+        message: "sucess",
+        product: product,
+      });
+    } catch (e) {
+      next(e);
     }
   };
 
   remove = async (req, res, next) => {
     const productId = req.params.id;
-    try{
-        res.status(200).json({
-            message:"sucess",
-            product_id: `id do produto deletado ${productId}`
-        });
-    }
-    catch(e){
-        next(e);
+    try {
+      res.status(200).json({
+        message: "sucess",
+        product_id: `id do produto deletado ${productId}`,
+      });
+    } catch (e) {
+      next(e);
     }
   };
 }
