@@ -18,6 +18,7 @@ const serviceOrderSchema = z.object({
     .number("o numero deve ser do tipo numero")
     .min(1, "numero deve ser no minimo 1")
     .max(10000, "numero da rua deve ser no maximo 10000"),
+  client_id: z.number("id do cliente deve ser um numero")
 });
 
 export default serviceOrderSchema;
